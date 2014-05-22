@@ -1,0 +1,32 @@
+From 9d0e4eba5564fe009810d0ee7efef44c5141e100 Mon Sep 17 00:00:00 2001
+From: Michael Brooks <mbrooksx@gmail.com>
+Date: Wed, 21 May 2014 23:40:57 -0700
+Subject: [PATCH] Update permission for ION
+
+Change-Id: Id83572ebce2d5020ca114d296ed867621e060ee4
+---
+ init.omap4pandaboard.rc | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/init.omap4pandaboard.rc b/init.omap4pandaboard.rc
+index d490bbb..d5f1eb4 100644
+--- a/init.omap4pandaboard.rc
++++ b/init.omap4pandaboard.rc
+@@ -42,6 +42,9 @@ on boot
+ 	chmod 0666 /dev/tiler
+ 	chmod 0666 /dev/dmm
+ 
++# change permission on ION driver
++	chmod 0777 /dev/ion
++
+ # cpufreq interactive governor: timer 20ms, min sample 20ms, hispeed 800MHz
+ 	write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+ 	write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 20000
+@@ -126,3 +129,4 @@ service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
+ service iprenew_eth0 /system/bin/dhcpcd -n
+     disabled
+     oneshot
++
+-- 
+1.8.3.2
+

@@ -1,0 +1,26 @@
+From 5d8ef1f82fef5b172650bc9100321b670a8c6ecf Mon Sep 17 00:00:00 2001
+From: Michael Brooks <mbrooksx@gmail.com>
+Date: Wed, 21 May 2014 23:24:49 -0700
+Subject: [PATCH] Add Missing ATOMIC_INIT_NOTIFIER_HEAD
+
+Signed-off-by: Michael Brooks <mbrooksx@gmail.com>
+---
+ drivers/usb/otg/omap-usb2.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/usb/otg/omap-usb2.c b/drivers/usb/otg/omap-usb2.c
+index 74ccd61..2eb4e5b 100644
+--- a/drivers/usb/otg/omap-usb2.c
++++ b/drivers/usb/otg/omap-usb2.c
+@@ -205,6 +205,8 @@ static int __devinit omap_usb2_probe(struct platform_device *pdev)
+ 		phy->optclk = optclk;
+ 
+ 	usb_add_phy(&phy->phy, USB_PHY_TYPE_USB2);
++	
++	ATOMIC_INIT_NOTIFIER_HEAD(&phy->phy.notifier);
+ 
+ 	platform_set_drvdata(pdev, phy);
+ 
+-- 
+1.8.3.2
+
